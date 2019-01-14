@@ -6,6 +6,15 @@
     </div>
     <button @click="getLanguage">Get Language</button>
     <hr> 
+
+    <h3>Example 2</h3>
+    <div>
+      Data:
+      <div v-for="champion in champions">
+        {{ champion }}
+      </div>
+    </div>
+    <button @click="getChampions">Get Champions</button>
   </div>
 </template>
 
@@ -17,7 +26,8 @@ export default {
 
   data () {
     return {
-      example1: ''
+      example1: '',
+      champions: []
     }
   },
 
@@ -32,6 +42,17 @@ export default {
       } catch (e) {
         console.log('err', e)
       }
+    },
+    async getChampions () {
+      const res = await axios.post(
+        'http://localhost:4000/graphql', {
+        query: `{
+          getChampions {
+            name
+          }
+        }`
+      })
+      this.champions = res.data.data
     }
   }
 }
