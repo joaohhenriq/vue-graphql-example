@@ -1,4 +1,5 @@
-# vue-graphql-example
+# Vue GraphQL Exemplo
+Projeto simples para praticar Vue com GraphQL.
 
 ## Project setup
 ```
